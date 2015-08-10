@@ -1,5 +1,5 @@
 FROM        golang
-MAINTAINER  Cole Brumley <github.com/colebrumley>
 COPY        build.sh /
-RUN         chmod +x /build.sh
+RUN         chmod +x /build.sh && mkdir /project
+VOLUME      /project
 CMD         /build.sh
