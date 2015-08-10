@@ -1,5 +1,9 @@
 #!/bin/bash
 set -e
-cd /project
+if [[ $(ls $GOPATH/src | wc -l) == 1 ]]; then
+	cd $GOPATH/src/$(ls $GOPATH/src)
+else
+	cd $GOPATH/src
+fi
 go get -t -d -v ./...
-CGO_ENABLED=0 go install -a -installsuffix cgo ./...
+go install -x -a -installsuffix cgo ./...
