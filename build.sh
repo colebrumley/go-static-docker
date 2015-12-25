@@ -3,7 +3,7 @@ set -e
 if [[ $(ls $GOPATH/src | wc -l) == 1 ]]; then
 	cd $GOPATH/src/$(ls $GOPATH/src)
 	go get -t -d -v
-	go install -o ${PWD##*/} -x -a -installsuffix cgo *.go
+	go install -x -a -installsuffix cgo *.go
 else
 	cd $GOPATH/src
 	go get -t -d -v ./...
